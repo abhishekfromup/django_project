@@ -1,0 +1,18 @@
+<!-- model_form_creation.html -->
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>model form</title>
+</head>
+<body>
+	<center>
+		<form method="POST">
+			{{ model_form }}
+			{% csrf_token %}
+			<input type="submit" name="submit details">
+		</form>
+	</center>
+</body>
+</html>

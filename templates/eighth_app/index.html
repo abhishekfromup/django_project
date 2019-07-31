@@ -1,0 +1,61 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>index</title>
+</head>
+<body bgcolor="#abcdef">
+	<center>
+		<h1 style="color: red">  {{ greetings }}, you are in the index page... </h1>
+
+		{% if students_feedback %}
+			<table border="1" width = 100% style="color: red," bgcolor="white" cellpadding="4">
+				<thead style="color: green">
+					<tr align="center">
+						<td> ID </td>
+						<td> NAME </td>
+						<td> COURSE </td>
+						<td> EMAIL </td>
+						<td> FEEDBACK </td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for record in students_feedback %}
+						<tr align="center">
+							<td>
+								{{ record.id }}
+							</td>
+							<td>
+								{{ record.name }}
+							</td>
+							<td>
+								{{ record.course }}
+							</td>
+							<td>
+								{{ record.email }}
+							</td>
+							<td>
+								{{ record.feedback }}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+
+
+		{% else %}
+			<h2 style="color: red"> No record available... </h2>
+
+		{% endif %}
+		<hr style="color: red">
+		<form method="post">
+			{{ feedback_form }}
+			{% csrf_token %}			
+			<input type="submit" name="submit">
+		</form>
+		
+	</center>
+</body>
+</html>
